@@ -1,3 +1,5 @@
+'use strict';
+
 var common = require('../common');
 var uuid = common.uuid;
 var stormpath = common.Stormpath;

@@ -1,3 +1,4 @@
+'use strict';
 var common = require('./common');
 var sinon = common.sinon;
 var should = common.should;

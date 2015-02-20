@@ -1,4 +1,5 @@
 'use strict';
+
 var async = require('async');
 var assert = require('assert');
 var stormpath = require('./lib');

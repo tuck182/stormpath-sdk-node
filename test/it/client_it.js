@@ -1,3 +1,5 @@
+'use strict';
+
 var common = require('../common');
 var stormpath = common.Stormpath;
 var helpers = require('./helpers');
