@@ -1,5 +1,3 @@
-'use strict';
-
 var common = require('./common');
 var sinon = common.sinon;
 

@@ -1,5 +1,4 @@
 /* jshint -W030 */
-'use strict';
 
 var common = require('./common');
 var sinon = common.sinon;
