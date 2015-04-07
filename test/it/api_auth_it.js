@@ -378,7 +378,7 @@ describe('Application.authenticateApiRequest',function(){
         });
         it('should err',function(){
           assert.instanceOf(result[0],Error);
-          assert.equal(result[0].statusCode,400);
+          assert.equal(result[0].statusCode,401);
         });
 
         it('should not return an instance of AuthenticationResult',function(){
@@ -536,7 +536,7 @@ describe('Application.authenticateApiRequest',function(){
     });
     it('should err',function(){
       assert.instanceOf(result[0],Error);
-      assert.equal(result[0].statusCode,400);
+      assert.equal(result[0].statusCode,401);
     });
 
     it('should not return an instance of AuthenticationResult',function(){
@@ -603,6 +603,7 @@ describe('Application.authenticateApiRequest',function(){
     var result;
     var desiredTtl = 13;
     var tokenResponse;
+    var decodedAccessToken;
 
     before(function(done){
       var requestObject = {
@@ -618,6 +619,8 @@ describe('Application.authenticateApiRequest',function(){
       },function(err,value){
         result = [err,value];
         tokenResponse = value.tokenResponse;
+        decodedAccessToken = jwt.decode(result[1].tokenResponse.access_token,
+          client._dataStore.requestExecutor.options.apiKey.secret,'HS256');
         done();
       });
     });
@@ -628,6 +631,7 @@ describe('Application.authenticateApiRequest',function(){
 
     it('should set the ttl',function(){
       assert.equal(tokenResponse.expires_in,desiredTtl);
+      assert.equal(decodedAccessToken.exp,(decodedAccessToken.iat + desiredTtl));
     });
 
   });

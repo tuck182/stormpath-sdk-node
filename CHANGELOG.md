@@ -1,5 +1,40 @@
 # stormpath-sdk-node Change Log
 
+### 0.9.1
+
+Add `.npmignore` to exclude docs, samples, and test from the npm distribution.  Thanks @coreybutler
+
+### 0.9.0
+
+Add these methods to `AuthenticationResult` to support token creation for Api Keys or Accounts:
+
+* `getJwt()` - returns a `Jwt` instance with a pre-configured body that is set to the appropriate defaults.  Also sets the signing key to the api key secret of the current Stormpath client.
+
+* `getAccessToken([jwt])` - calls `jwt.compact()` on the given `jwt`, or a default `jwt` constructed by `getJwt()`
+
+* `getAccessTokenResponse([jwt])` - constructs an Oauth-compatible response body from the given `jwt`, or a default `jwt` constructed with `getJwt()`
+
+The `Jwt` instances are provided by the [nJwt Library](https://github.com/jwtk/njwt)
+
+### 0.8.1
+
+Cache fix: preserve hrefs of linked resources in the cache entity, but not the properties.
+This allows getter methods to resolve the linked resource at a later time.
+
+### 0.8.0
+
+Fixed these caching problems:
+
+* Touching items in the cache when we don't need to (thanks [philipatkinson](https://github.com/philipatkinson))
+* When requesting a collection the individual resources in the collection were not being put into their respective cache regions
+* When requesting a resource with expanded resources, the expansions were not being cached
+* When requesting a resource with an expanded collection, the resources in the collection were not being cached
+
+Improvements:
+
+* Support the passing of client instances for Redis and Memcached, this allows you to share
+one connection to your store for all Stormpath cache regions (thanks [philipatkinson](https://github.com/philipatkinson))
+
 ### 0.7.5
 
 * Fixing bug with `GroupMemnberships.getAccount()`.

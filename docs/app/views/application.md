@@ -22,9 +22,7 @@ Authenticate your application user accounts with a simple username/password pair
 ```javascript
 var authcRequest = {
   username: 'jlpicard', //username can be an email address too
-  password 'RawPassw0rd!',
-  //optional href to an account store to target the authentication 
-  accountStore: "https://api.stormpath.com/v1/directories/2Egd5pbwBprX7ee02DvZCC" 
+  password: 'RawPassw0rd!'
 };
 
 application.authenticateAccount(authcRequest, function onAuthcResult(err, result) {

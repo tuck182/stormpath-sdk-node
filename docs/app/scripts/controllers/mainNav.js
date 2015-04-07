@@ -40,6 +40,10 @@ function items() {
     item('Client', null, [
       anchor('Overview', 'top'),
       anchor('Client', 'ctor'),
+      anchor('Caching','caching'),
+      anchor('Caching (In-Memory)','memory'),
+      anchor('Caching (Memcached)','memcached'),
+      anchor('Caching (Redis)','redis'),
       anchor('createApplication'),
       anchor('createDirectory'),
       anchor('getAccount'),
@@ -107,7 +111,10 @@ function items() {
 
     item('AuthenticationResult', 'authenticationResult', [
       anchor('Overview', 'top'),
-      anchor('getAccount')
+      anchor('getAccount'),
+      anchor('getAccessToken'),
+      anchor('getAccessTokenResponse'),
+      anchor('getJwt')
     ]),
 
     item('Cache', 'cache', [
